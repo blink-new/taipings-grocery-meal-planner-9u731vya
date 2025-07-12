@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Australian-inspired color palette */
+    --background: 35 20% 98%;
+    --foreground: 160 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 15% 15%;
+    
+    /* Primary: Eucalyptus Green */
+    --primary: 160 35% 45%;
+    --primary-foreground: 0 0% 98%;
+    
+    /* Secondary: Warm Sandstone */
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 160 15% 15%;
+    
+    /* Accent: Ocean Blue */
+    --accent: 205 65% 55%;
+    --accent-foreground: 0 0% 98%;
+    
+    --muted: 35 15% 92%;
+    --muted-foreground: 160 8% 45%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 160 35% 45%;
+    --radius: 8px;
+    
+    /* Australian grocery store brand colors */
+    --coles: 0 85% 65%;
+    --woolworths: 88 65% 45%;
+    --iga: 220 85% 55%;
+    --butcher: 25 85% 55%;
+    --asian-market: 340 75% 55%;
+    
+    /* Meal type colors */
+    --breakfast: 45 90% 75%;
+    --lunch: 160 65% 65%;
+    --dinner: 220 75% 65%;
+    --snack: 280 65% 75%;
+  }
+
+  .dark {
+    --background: 160 15% 8%;
+    --foreground: 35 15% 95%;
+    --card: 160 15% 10%;
+    --card-foreground: 35 15% 95%;
+    --popover: 160 15% 10%;
+    --popover-foreground: 35 15% 95%;
+    --primary: 160 45% 55%;
+    --primary-foreground: 160 15% 8%;
+    --secondary: 160 10% 15%;
+    --secondary-foreground: 35 15% 95%;
+    --accent: 205 75% 65%;
+    --accent-foreground: 160 15% 8%;
+    --muted: 160 10% 15%;
+    --muted-foreground: 35 8% 65%;
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 160 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium;
+  }
+}
+
+@layer components {
+  .store-coles {
+    @apply bg-red-50 border-red-200 text-red-800;
+  }
+  
+  .store-woolworths {
+    @apply bg-green-50 border-green-200 text-green-800;
+  }
+  
+  .store-iga {
+    @apply bg-blue-50 border-blue-200 text-blue-800;
+  }
+  
+  .store-butcher {
+    @apply bg-orange-50 border-orange-200 text-orange-800;
+  }
+  
+  .store-asian {
+    @apply bg-purple-50 border-purple-200 text-purple-800;
+  }
+  
+  .meal-breakfast {
+    @apply bg-yellow-100 border-yellow-300 text-yellow-800;
+  }
+  
+  .meal-lunch {
+    @apply bg-green-100 border-green-300 text-green-800;
+  }
+  
+  .meal-dinner {
+    @apply bg-blue-100 border-blue-300 text-blue-800;
+  }
+  
+  .meal-snack {
+    @apply bg-purple-100 border-purple-300 text-purple-800;
+  }
+  
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(35 25% 96%) 100%);
+  }
+  
+  .recipe-card {
+    @apply bg-card border border-border rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer;
+  }
+  
+  .recipe-card:hover {
+    @apply border-primary/50 transform translate-y-[-2px];
+  }
+  
+  .day-column {
+    @apply bg-card border border-border rounded-lg p-3 min-h-[300px] hover:border-primary/30 transition-colors;
+  }
+  
+  .drag-drop-zone {
+    @apply border-2 border-dashed border-muted-foreground/30 rounded-lg p-4 text-center text-muted-foreground hover:border-primary/50 hover:bg-primary/5 transition-all;
+  }
+  
+  .drag-drop-zone.drag-over {
+    @apply border-primary bg-primary/10;
+  }
+}
+
+/* Smooth animations */
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
+}
